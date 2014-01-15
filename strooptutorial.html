@@ -1,0 +1,1251 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Coding experiments for web browsers a tutorial</title>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<h1>Coding experiments for web browsers a tutorial</h1>
+
+<h2>Getting started</h2>
+
+<p>This tutorial makes use of HTML, JavaScript, CSS style sheets, and JQUERY (a useful JavaScript library). All of the code is written using any standard text editor. I use the free program Textwrangler, which automatically color codes your scripts and makes for easy editing. I also use Google Chrome to test and run code using its extensive developer tools for logging errors and command line for running and checking scripts.</p>
+
+<p>HTML files are created by saving your text file with a .html ending. JavaScript files are saved with a .js ending. CSS style sheets are saved with a .css ending.</p>
+
+<p>HTML, Javascript, and CSS work together to accomplish different functions. The HTML file will code the basic layout of the website. Things like text, buttons, and images that you want displayed on the website are coded in HTML. JavaScript is a programming language that works together with HTML. It can run on its own and run any sort of computations that you code, and more importantly it can control the behavior of the website. JQUERY is a free library for JavaScript that makes controlling HTML behavior very easy. Commands from this library will be used to hide and show information during the experiment. CSS style sheets are a part of HTML. They are used to set display properties of text, buttons, and images; for example, font size, color, location etc. All of these properties can be set in the HTML code itself without CSS, but having these properties set outside the main HTML code may help to keep your scripts tidy and readable.</p>
+
+<p>There are many general resources on the web for HTML and Javascript, here a few good places:</p>
+
+<p><a href="http://www.jquery.com">http://www.jquery.com</a>   - Download JQUERY</p>
+
+<p><a href="http://www.w3schools.com">http://www.w3schools.com</a>     - General tutorials for all things web</p>
+
+<p><a href="http://www.codecademy.com">http://www.codecademy.com</a>   -Tutorials for learning Javascript and HTML</p>
+
+<p><a href="http://www.jsfiddle.net">http://www.jsfiddle.net</a>     -Develop and test HTML, Javascript, JQUERY and CSS online</p>
+
+<p>When you run into trouble you will most likely have stumbled on a problem that someone else has had. Search for the solution on Google and read forums on sites like <a href="http://www.stackoverflow.com">Stackoverflow</a> or <a href="http://www.stackexchange.com">Stackexchange</a>.</p>
+
+<h2>Contents of the Tutorial</h2>
+
+<p>This is the main tutorial document. The main document covers the following:</p>
+
+<ol>
+<li>HTML Basics: A really basic intro to HTML, I recommend the links from above and a lot of googling to learn more.</li>
+<li>Javascript Basics: A really basic into to javascript, same recommendation as above to learn more.</li>
+<li>General logic of scripting a simple-trial based experiment: This is a lengthy section that goes incrementally through the logic of programming a Stroop experiment in Javascript.</li>
+<li>Running your experiment on Amazon Turk: Covers a basic intro to Amazon Turk, creating an account, downloading and using the command line tools on a mac, and running the external_hit example</li>
+<li>Loading the Stroop example onto Amazon Turk: Covers loading a fully coded Stroop experiment onto Amazon Turk</li>
+</ol>
+
+
+<h2>Support files</h2>
+
+<p>The tutorial folder currently consists of 22 files. Each file and it’s purpose is listed below:</p>
+
+<ol>
+<li>htmlbasics.html – a simple webpage illustrating use of simple HTML elements that are covered in the HTML basics section. This can be loaded into a web browser, and edited in any text editor.</li>
+<li>JavascriptBasics.js – a .js script showing how to declare different kinds of variables, run a loop, IF/Then statements, and syntax for writing functions. The lines can be copied and pasted into Google chrome using the developer tools and the command line using this tool.</li>
+<li>Jquery-1.7.1.js – This is the JQUERY library, a useful library for programming with javascript. Several of the html files refer to this library for functionality.</li>
+<li>Tutorial.doc – This document</li>
+<li>Stroop.css – A CSS style sheet that several of the StroopDemo’s use to set style properties (location of paragraph elements, font-size, background color etc.)</li>
+<li>StroopDemo.html -> StroopDemo7b.html – These html files show incremental development of the Stroop experiment. Section 3 “general logic of scripting a simple-trial based experiment” lists the features of each.</li>
+<li>StroopDemo8.html &amp; StroopDemo8b.html – a final worked example of a Stroop experiment that can be loaded on as HIT using Amazon Turk</li>
+<li>StroopInstruct.htm – an HTML file created in Word that lists instructions for the StroopDemo8.html experiment.</li>
+<li>StrooptrialGenerator.js – a javascript support file for running the Stroop experiments</li>
+<li>Turkconsent.htm – an HTML file created in Word with example wording for consent.</li>
+<li>DemoStroop – a folder containing the UNIX scripts from the Amazon command line tools that are needed to run the experiment on Amazon Turk. This is covered in the final section.</li>
+</ol>
+
+
+<h2>HTML Basics</h2>
+
+<p>The htmlbasics.html file shows a very simple webpage displaying a few html elements. The code reads:</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;!-- this is a comment, not shown on page--&gt;
+&lt;p&gt;A new paragraph for text&lt;/p&gt;
+&lt;p id="p1"&gt;A new paragraph for text&lt;/p&gt;
+&lt;button&gt;A button&lt;/button&gt;
+&lt;a href="http://www.google.com"&gt;A link&lt;/a&gt;
+&lt;br /&gt; &lt;!-- this is a line break --&gt;
+&lt;p id="p2" align="center" style="color:red"&gt;A new paragraph for text&lt;/p&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>This file will produce a webpage that looks like the following:</p>
+
+<hr />
+
+<p><html>
+<head></p>
+
+<p></head></p>
+
+<p><body></p>
+
+<!-- this is a comment, not shown on page-->
+
+
+<p>A new paragraph for text</p>
+
+
+<p id="p1">A new paragraph for text</p>
+
+
+<p><button>A button</button>
+<a href="http://www.google.com">A link</a>
+<br /> <!-- this is a line break --></p>
+
+<p id="p2" align="center" style="color:red">A new paragraph for text</p>
+
+
+<p></body>
+</html></p>
+
+<hr />
+
+<p>Let's look more closelt at the code block above. All html documents begin with &lt;html> and end with &lt;/html>. This is a general rule for all html statements (although there are some exceptions), they all start with &lt; >, and end with </ >. For example,</p>
+
+<pre><code>&lt;p&gt; &lt;/p&gt; declares a new paragraph
+&lt;button&gt; &lt;/button&gt; makes a new button
+</code></pre>
+
+<p>These elements are placed on screen in the order that they are placed in the code. Paragraphs written with <code>&lt;p&gt;&lt;/p&gt;</code> go to a new line. Each element, whether a button or paragraph, or some other element, has many properties that can change the look of the element and/or add new functionality.  As an example, the last paragraph in the block above shows how to center the text, and how to make the font color red.</p>
+
+<p>Important: HTML elements can each be assigned a unique id. This allows the element to act as a variable that can be controlled by Javascript. Notice the second paragraph states:</p>
+
+<p><code>&lt;p id="p1"&gt;A new paragraph for text&lt;/p&gt;</code></p>
+
+<p>This paragraph has the id, p1. We will be able to use Javascript to refer to this pargraph and control it’s behavior (hide and show, change contents etc.).</p>
+
+<h2>Javascript Basics</h2>
+
+<p>Open the JavascriptBasics.js file. Open Google Chrome, then choose View > Developer Javascript console, from the menu. Find the command prompt that should appear on the bottom of the web browser, drag up and resize as you see fit. You can now enter Javascript commands into the terminal. You can copy and paste the whole .js file into the terminal and run it. The file has examples of declaring variables, running loops, if/then statemtents, and writing functions. The following describes these in more detail.</p>
+
+<h3>Declaring variables:</h3>
+
+<p>In Javascript you need to declare variables before you use them. There are two ways of declaring variables. Type the following into the terminal and press enter:</p>
+
+<p><code>a=1;</code></p>
+
+<p>This will declare the variable a, and assign it a number value of 1. Because you have entered an integer, the number will be an integer, if you entered a decimal, it will become a floating point.</p>
+
+<p>You can see the contents of variables by typing their name and pressing enter in the terminal</p>
+
+<p><code>a</code></p>
+
+<p>This should return 1. When you write code in Javascript you normally end each line with a semicolon (;). This tells javascript not to print the line to the terminal. If you declare a variable without the (;) then it will print to the console loge.</p>
+
+<p><code>b=1</code></p>
+
+<p>will print 1 to the console. It is best practice to use semicolons at the end of each line.</p>
+
+<p>Another way to declare variables is with var.</p>
+
+<p><code>var c = 1;</code></p>
+
+<p>This is essentially the same as above, except including var makes the variable a local variable. It is best practice to declare all variables with var, this is especially important when writing functions. It makes the variables local to the function that you are writing. Whenever you want a global variable, do not use var.</p>
+
+<h3>Variable Types</h3>
+
+<p>You can define strings (characters), numbers, integers, decimal numbers, arrays, and objects in javascript.</p>
+
+<h4>Strings</h4>
+
+<p>Strings are declared with straight single <code>'a'</code> or double quotes <code>"a"</code>.</p>
+
+<pre><code>var b = "hello";
+var c = "123";
+</code></pre>
+
+<p>Both b and c are now variables that contain strings. When a number is declared as a string it is treated as character, and not a number. You convert strings to numbers and viceversa. To do this you need to call a function that turns the string into a number. For example:</p>
+
+<pre><code>parseInt(c)  // turns a number into an integer
+parseFloat(c) // turns a number into a floating point decimal
+</code></pre>
+
+<p>I’ve used // in the above code. These are comments, anything written after the // is not executed as code. You can use comments to make notes in your code.</p>
+
+<h4>Numbers</h4>
+
+<pre><code>var d = 1; //creates an integer
+var e = 4.5; //creates a floating point decimal
+</code></pre>
+
+<h4>Arrays</h4>
+
+<p>Javascript supports arrays. Arrays are essentially variables that contain variables inside them. For example:</p>
+
+<p><code>var h = [7,4,3,6,5,8];</code></p>
+
+<p>h is now an array. The array has 6 elements inside of it. Each of these elements can be addressed using square brackets [ ] .</p>
+
+<pre><code>h[0]  // will return 7, the first element in the array
+h[3] //will return 6, the fourth element in the array
+</code></pre>
+
+<p>The index for the array starts at 0, and this important to remember.</p>
+
+<p>Arrays can hold different types of variables inside of them, for example, numbers and strings:</p>
+
+<p><code>var g = ["hello",3,"test",7,5.56];</code></p>
+
+<p>Sometimes you will want to create an empty array so that you can add to it later. Here’s how to define a new empty array</p>
+
+<pre><code>var h = new Array('');  //note this is two ‘s without a space not a “.
+var h =[''];  //does the same as above
+</code></pre>
+
+<p>You can easily add new elements to this array again using bracket notation.</p>
+
+<pre><code>h[0] = 1;
+h[1] = 2;
+</code></pre>
+
+<h4>Multidimensional arrays</h4>
+
+<p>Just as arrays can hold variables, they can also hold arrays. An array within an array is called a multidimensional array. One way to define them is:</p>
+
+<p><code>var i = [[1,2,3],[8,4,5],[8,2,3]];</code></p>
+
+<p>Now the array i has three subarrays.You can address the elements using bracket notation.</p>
+
+<pre><code>i[0]  // will return the array [1,2,3]
+i[0][0] //will return 1, which is this first element in the sub-array.
+</code></pre>
+
+<p>You can nest multiple arrays within arrays and have many dimensional arrays. When building experiments we will use arrays to store trial information coding things like trial number, stimulus information, condition information etc.</p>
+
+<h3>IMPORTANT NOTE ABOUT ARRAYS</h3>
+
+<p>Array variables are referenced in Javascript in potentially unintuitive ways. For example:</p>
+
+<pre><code>A=[1,2,3,4,5];
+B=A;
+B[0]=15;
+</code></pre>
+
+<p>If you ran this code you might imagine that B becomes a new array that is the same as A. Then, we have replaced the first element in B with 15.
+However if you now look inside B and A you will see:</p>
+
+<pre><code>A=[15,2,3,4,5]
+B=[15,2,3,4,5]
+</code></pre>
+
+<p>The change made to B also changed A. This has to do with how javascript references arrays. This is important to realize when you start using arrays. This kind of referencing can work to your advantage, or to avoid it you can use concat().</p>
+
+<pre><code>A=[1,2,3,4,5];
+B=A.concat();
+B[0]=15;
+</code></pre>
+
+<p>Now, if you look inside the variables you will see:</p>
+
+<pre><code>A=[1,2,3,4,5];
+B=[15,2,3,4,5];
+</code></pre>
+
+<h3>Common operations</h3>
+
+<p>Javascript has many built in functions that allow you to manipulate variables by changing them, adding to them, or to address variables and find out information about them.</p>
+
+<h4>Finding the length of variables.</h4>
+
+<p>A common issue is finding the length of a variable or array. You might want to know how many characters are in a string, or how many elements in an array. For this we use .length</p>
+
+<pre><code>var aa = "hello world";
+aa.length //returns the number of characters in the string, 11
+
+var bb = [1,2,3,4];
+bb.length  //returns the number of elements in the array
+</code></pre>
+
+<h4>Adding to a variable</h4>
+
+<p>Another common issue is appending to information to a variable. Javascript has a number of ways of doing this, one simple way is to use +</p>
+
+<pre><code>var aa = "hello world";
+gg=aa + " hello"; // gg will contain “hello world hello”
+</code></pre>
+
+<p>Another way is to use +=</p>
+
+<pre><code>aa+="hello" //this will append hello to whatever is in aa
+</code></pre>
+
+<h4>Running a loop</h4>
+
+<p>Javascript uses for loops to run iterations. The loop takes a number as a starting point, and a number as an endpoint, and finally a number for each increment. The syntax is:</p>
+
+<pre><code>var test = new Array('')
+for (i=0; i&lt;=10; i++) {
+    test[i] = i+5;
+} 
+</code></pre>
+
+<p>The above line of code defines a new array called test, and initializes it to be empty. The for loop starts with the variable i at 0, it says run until i is less than or equal to 10, and i++ means to add 1 to i for each loop. This statement is contained between ( ) brackets. Next, the code in the loop is contained between { } curly brackets. Here we are simply filling elements in the array test, from 0 to 10, with numbers that equal i+5.</p>
+
+<h4>IF/THEN statements</h4>
+
+<p>The syntax for logic statements is similar to that of the for loop. The following example creates a for loop that runs from 0 to 100, and gives different instructions for what to do when the loop is less than 50 and greater than 50.</p>
+
+<pre><code>var test = new Array('')
+for (i=0; i&lt;=100; i++) {
+    if (i&lt;=50) {
+        test[i] = i+5;
+}
+else if (i&gt;50) {
+    test[i] = i+10;
+}
+} 
+</code></pre>
+
+<p>When i is less than 50 we add i+5 to the array, but when i is greater than 50 we add i+10 to the array. The basic syntax is to start with if, put the logical statement between () brackets, then put the code to follow for these conditions in { } curly brackets. You can can keep adding more else if statements, and you can also use a plain else statement that covers all remaining logical conditions.</p>
+
+<h4>Writing a function</h4>
+
+<p>You can write your own functions very easily in javascript. The following is an example of a function that sums all of the elements of array. Note, this function will only work if the array contains numbers</p>
+
+<pre><code>var j = [1,2,3,4,5]; //declares an array with some numbers, not part of the function
+
+function sumarray(t) {  
+    for (i=0; i&lt;=t.length-1; i++){
+    tempsum+=t[i];
+    }
+return tempsum
+}
+
+sumarray(j) //returns the sum of array j
+</code></pre>
+
+<p>We always start functions with the word function, next is the name of the function, in this case sumarray. You can choose any name for the function. Following the name we put () brackets, and inside these brackets we put the name of our input variable. We use any name for the input, and it generically stands for all possible inputs to our function. In this case I used the variable name t. We will refer to t later in the function. Just like for loops and if/then statements, the body of the function is contained between {} curly brackets. Inside the function is a simple for loop that starts at 0, and goes to the length of the input array (t.length-1). There is a -1 to account for the fact that the first value in the array starts at the 0 index, and the last value is the length-1. Inside the for loop is a new variable called tempsum, here we use += to have the contents of the current indexed element of the array to be added to tempsum. After the loop has finished running we want to return the sum as output. Simply tell the function to return tempsum.</p>
+
+<h2>General logic of scripting a simple trial-based experiment</h2>
+
+<p>This example covers a simple Stroop experiment, which is a good example of most trial-based experiments. Most trial-based experiments present a stimulus on screen during each trial, and require a response to the stimulus. The challenge for coding such an experiment is to display stimuli on screen, record timestamps for the onset of the stimulus, record responses to the stimulus, and record timestamps for the response.</p>
+
+<p>A typical Stroop experiment presents colored word stimuli on each trial, for example the word BLUE printed in blue ink (a congruent trial), or the word RED printed in green ink (an incongruent trial). The task is usually to identify the color, not the word,  as fast as possible. A multi-trial experiment would usually have 100s of trials, with the stimuli on each trial randomized. In this case we will be coding an experiment with 96 trials. We will have 50% of the trials be congruent and 50% be incongruent.</p>
+
+<p>We start the logic of the experiment by thinking about the stimuli that we need to create, and the design that we need to implement. We need to choose the colors and words that we will use. Let’s use: red, green, yellow, and blue. With these four colors we have four possible congruent items (RR, BB, GG, YY), and 12 possible incongruent items (RG, RB, RY, BG, BY, BR, GR, GB, GY, YG, YR, YB). Thus, to ensure 50% congruent and incongruent items, we need to present all 12 incongruent at least once, and all 4 congruent stimuli 3 times each. This is a total of 24 trials. If we want more trials, to ensure a balanced design we run trials in multiples of 24 (hence, our 96 trials which is a multiple of 24).</p>
+
+<h3>Implementing the design</h3>
+
+<p>When you finally run the Stroop experiment you will want several important things to happen. 1) all 96 trials to be presented, 2) have the trials be presented in a randomized order, or in another order that you prescribe, 3) have the trial information coding what happened on each trial stored to your data file. Your data file should contain as much useful information as possible so that you can reconstruct exactly what happened on each trial. For example, for each trial you want to code 1) trial number, 2) the stimulus that appeared, in this case the word and color that was presented, 3) condition information, you may want to code the kind of trial that it was (e.g., congruent vs. incongruent), 4) Timing information about when the stimulus was presented, 5) the response made to the stimulus, you can optionally encode whether the response was correct, 6) timing information about the response that was made. Your data file will be a complete record of what happened during the experiment. When you code your experiment it is very important to think ahead and make sure that your experiment code will create the data file that you want for final analysis.
+We can think of the data file as being composed of two parts. The first part codes the design of the experiment, that is what stimuli from which condition gets presented on each trial. The second part codes the results from the participant, the responses that were made to each stimulus on each trial. When coding up the experiment we are basically creating half of a data file. It will be a datafile with all of the stimulus information for each trial, but will be missing the subject’s results from each trial.</p>
+
+<p>We need a logical way of representing the events on each trial, for example consider the table below:</p>
+
+<table>
+<thead>
+<tr>
+<th>Trial number</th>
+<th>Word</th>
+<th>Color</th>
+<th>Condition</th>
+<th>OnsetTime</th>
+<th>ResponseTime</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td> RED</td>
+<td>RED</td>
+<td>CON</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2</td>
+<td> BLUE</td>
+<td>RED</td>
+<td>INC</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>3</td>
+<td> BLUE</td>
+<td>BLUE</td>
+<td>CON</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>4</td>
+<td> GREEN</td>
+<td>GREEN</td>
+<td>CON</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>5</td>
+<td> YELLOW</td>
+<td>RED</td>
+<td>INC</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>The above table is half of a data-file, it is missing the onset times of each Stroop stimulus (when it appeared on screen), the response times for each trial, and the response key that was struck. When we finally program and run the experiment, we want to be able to save a complete datafile with all of the response information. Before that, however, we can use the first half of the data-file to control how each trial unfolds during the experiment. That is, we can use the information in the data file as part of the program of the experiment.</p>
+
+<p>To run a Stroop experiment you need a computer with a blank screen, then on each trial you need to tell the computer to print a Stroop stimulus to the screen and wait for a response. You can use the first half of the data file to control this behavior. The description of each trial in the data file will instruct the computer to display certain words in certain colors on certain trials.</p>
+
+<p>In plain language, the algorithm would accomplish something like this. You need a variable to act as a counter, this counter will start at 0, and increment by 1 on each trial. On the first trial it will be one, you can then use this information to index the datafile, that is go to line 1 of the datafile and retrieve column 1 for the word information, and column 2 for the color information. You need to figure out how to command the computer to display a “string” on screen, and to tell the computer to display the string that is in column 1 of line 1 of the data file. Then you need to tell the computer to print that string in the color that is contained in column 2 of line 1. On the next trial, the counter will be two, and using the same algorithm as above, the computer will be instructed to display the word and color contained in the columns of line 2 of the data file.</p>
+
+<h3>Coding the design in Javascript</h3>
+
+<p>The above table can easily be coded directly in javascript using arrays. We can code trials in different “lines” of the array, and code the parameters for each trial in the “columns” of the array. A code snippet is below:</p>
+
+<pre><code>var Strooptrials = [["red","red","con"],
+["green","green","con"], 
+["red","blue","inc"],
+["red","yellow","inc"],
+["blue","red","inc"],
+["red","red","con"]];
+</code></pre>
+
+<p>In javascript this is actually called a multi-dimensional array. This is because each line <code>[“green”,”green”,”con”],</code> is itself an array with 3 elements. So the above array has 6 lines, or elements, and the inner arrays each have 3 elements. Just like lines and columns. You can address or index the array using square <code>[ ]</code> brackets. One peculiarity about javascript arrays is that the index begins at 0, so the line 1 is really 0, and the first element in an array is 0. The first trial has the word red in ink color red. You can index the array in the following way to access this information:</p>
+
+<pre><code>Strooptrials[0][0] – will equal red the word
+Strooptrials[0][1] – will equal red the color
+Strooptrials[0][2] – will equal con, the congruent condition label
+
+Strooptrials[2][0] – will equal red the word
+Strooptrials[2][1] – will equal blue the color
+Strooptrials[2][2] – will equal inc, the congruent condition label
+</code></pre>
+
+<p>Eventually in the main program we will have a variable that counts the current trials. Say this variable is called i.</p>
+
+<pre><code>var i=0;
+</code></pre>
+
+<p>We can use this variable to control the index into the Strooptrials array.</p>
+
+<pre><code>Strooptrials[i][0] – will equal the word from trial i
+Strooptrials[i][1] – will equal the color from trial i
+Strooptrials[i][2] – will equal the condition from trial i
+</code></pre>
+
+<p>As i gets larger, we will cycle through all of the trials coded in the array.</p>
+
+<p>To make a 96 trial Stroop experiment you would want to create a variable, like Strooptrials, that has 96 lines instead of 6. You could easily do this by typing each line yourself. You could also use Javascript to help you do this. An example is below. This example starts with a Stroop trials variables that has 24 lines, coding each of the unique possible Stroop items that exist by pairing all combinations of red, green, blue, and yellow. The code then uses a function to create a new variable called trials, that allows you to have multiples of 24 trials.</p>
+
+<p>Here is the variable Stroopitems, containing 24 trials.</p>
+
+<pre><code>Stroopitems = [["red","red","con"],
+["blue","blue","con"],
+["green","green","con"],
+["green","green","con"],
+["red","red","con"],
+["blue","blue","con"],
+["green","green","con"],
+["green","green","con"],
+["red","red","con"],
+["blue","blue","con"],
+["green","green","con"],
+["green","green","con"],
+["red","blue","inc"],
+["red","yellow","inc"],
+["red","green","inc"],
+["blue","red","inc"],
+["blue","yellow","inc"],
+["blue","green","inc"],
+["green","red","inc"],
+["green","yellow","inc"],
+["green","blue","inc"],
+["yellow","red","inc"],
+["yellow","green","inc"],
+["yellow","blue","inc"]];
+
+var trials=randomizearray(createtrials(Stroopitems,4)); 
+</code></pre>
+
+<p>The last line creates a new variable trials, and it uses two functions, randomizearray, and createtrials.</p>
+
+<p>The createtrials  function simply takes an array as input, as well as a multiplier value. Then it returns a new array with multiple copies of the first array specified by the multiplier</p>
+
+<pre><code>function createtrials(input,ntimes) {
+    var temparray = new Array(new Array(''));
+    var iii=-1;
+    for (i=0; i&lt;=ntimes-1; i++) {
+        for (ii=0; ii&lt;=input.length-1; ii++){
+            iii++;
+            temparray[iii]=input[ii];
+        }
+    }
+    return temparray;
+}
+</code></pre>
+
+<p>The randomizearray function rearranges the order the elements in an array. We use this to shuffle the order of trials in the trial array, this way all subjects will receive different trial orders.</p>
+
+<pre><code>function randomizearray(t){
+    var tt= t;
+    var n = 0;
+    var a = "";
+    var b = "";
+    var i = 0;
+    for (i=0; i &lt;= t.length-1; i++){
+        n = Math.floor(Math.random()*t.length);
+        a = tt[i];
+        b = tt[n];
+        tt[i] = b;
+        tt[n] = a;    
+    }
+    return tt;
+}
+</code></pre>
+
+<p>Running this code results in a new variable called trials, it will contain 96 trials, and all of the trials will have a randomized order. Now we really have half of a datafile, all that is missing is the responses from each. To get those, we need to program the main experiment. This involves learning how to control the display of information on screen.</p>
+
+<h3>Displaying trials on screen</h3>
+
+<p>We are going to program a web-browser to present each trial on screen. This is mildly complicated because in order to do this we need to create an HTML based web-page, and then control this web-page with Javascript. We will also use a javascript library called JQUERY that allows easy control of the HTML elements.</p>
+
+<p>You can create an html page in any text editor by assigning the file name a .html extension instead of a .txt extension.</p>
+
+<p>Here’s a really simple webpage script:</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;p&gt;Hello world&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>We are going to slowly expand this script to program our experiment. Most everything in HTML has opening and closing statements, and more opening and closing statements nested within. The overarching opening statement is <code>&lt;html&gt;</code> and you will see the last closing statement is <code>&lt;/html&gt;</code>.  Within this we have <code>&lt;head&gt; &lt;/head&gt;</code>, we will insert code in here later to tell the webpage where to look for javascript code. The main webpage is coded between the <code>&lt;body&gt; &lt;/body&gt;</code> statements. Inside here we see <code>&lt;p&gt;Hello world&lt;/p&gt;</code>. If you ran this in a web browser, you would see the line Hello world printed to the screen. The <code>&lt;p&gt;&lt;/p&gt;</code> statement declares a paragraph. Anything between <code>&lt;p&gt;anythinghere&lt;/p&gt;</code> is what gets printed to the screen.</p>
+
+<p>IMPORTANTLY, we can treat paragraphs as variables and give them a name.</p>
+
+<p><code>&lt;p id="Probe"&gt;Hello world&lt;/p&gt;</code></p>
+
+<p>Now this paragraph has an individual id or variable name called Probe. This is important, because we can use Javascript and JQUERY to control the behavior of this paragraph. We can show and hide the paragraph and change the contents of the paragraph. Our first goal will be to print a Stroop stimulus into this paragraph. Before we do that though, we need to set up Javascript and JQUERY to work with this HTML document.</p>
+
+<p>The following code assumes that your HTML document is located in a folder with the two following javascript files, one for jquery, and one for the creation of Stroop items described above.</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="jquery-1.7.1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="StrooptrialGenerator.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p id="Probe"&gt;Hello world&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>We use the header to refer to the location of the relevant .js files so that they can be used in our HTML document. These load preexisting javascript files. In our program, we will also write some javascript directly into the HTML document. To do that we include a few more lines in the header as follows:</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="jquery-1.7.1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="StrooptrialGenerator.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(document).ready(function(){
+    //our code will go here
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p id="Probe"&gt;Hello world&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Notice that we have again called <code>&lt;script type="text/javascript"&gt;</code>, but this time we haven’t specified a source file <code>src=""</code>. Instead we will write the script directly between the opening statement <code>&lt;script type="text/javascript"&gt; code here &lt;/script&gt;</code>, and the closing statement.</p>
+
+<p>Finally, we will write our code inside the document ready function, which ensures that everything is loaded before the page is displayed. The document ready function looks like this from above:</p>
+
+<pre><code>$(document).ready(function(){
+    //our code will go here
+});
+</code></pre>
+
+<p>If we run the above HTML code, we will automatically create the trials variable because we will have called the .js file that executes this code. This means that by the time the webpage loads, the variable trials already exists and can be used. As well, we have already specified a paragraph that can display text and given it a name called Probe. We eventually want the contents of this paragraph to be controlled by the contents of the trials variable. To do this we will use JQUERY. As a first test of the concept, let’s write a code that will cause the first word from the first trial in variable trials to be written and displayed in the paragraph Probe.</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="jquery-1.7.1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="StrooptrialGenerator.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(document).ready(function(){
+        $("#Probe").html(trials[0][0]);
+});
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;p id="Probe"&gt;Hello world&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>All we have done here is added one line of code inside the document ready function. The code is:</p>
+
+<pre><code>$("#Probe").html(trials[0][0]);
+</code></pre>
+
+<p>This uses JQUERY, and allows information from javascript variables (e.g, <code>trials[0][0]</code>) to control the behavior of HTML elements. The HTML element is called using the syntax <code>$("#Probe")</code>, and the <code>$("#Probe").html()</code> statement allows us to set the html contents of paragraph Probe to the contents inside the <code>( )</code> brackets. This should display the first word in the trials array in the paragraph. Notice, if you keep reloading the page, the word that is displayed should keep randomly changing, this is because of the randomizearray function that we use everytime we construct the trials array. This occurs with every page refresh.</p>
+
+<p>To illustrate a few more aspects of JQUERY, like hiding and showing an HTML element, and using buttons in HTML consider the next code.</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="jquery-1.7.1.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+$(document).ready(function(){
+    $("#showit").click(function(){
+        $("#Probe").show();
+    });
+    $("#hideit").click(function(){
+        $("#Probe").hide();
+    });
+});
+
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;p id="Probe"&gt;Hello world&lt;/p&gt;
+&lt;button id="showit"&gt;show&lt;/button&gt;
+&lt;button id="hideit"&gt;hide&lt;/button&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In the body of the HTML we have inserted two buttons, and given each a unique id or variable name. One is called show, and the other hide. Clicking these buttons will demonstrate how to show and hide a paragraph element in HTML. We do this in the javascript section using JQUERY.</p>
+
+<pre><code>$("#showit").click(function(){
+    $("#Probe").show();
+});
+</code></pre>
+
+<p>This is the syntax for allowing a specific button click, from button showit, to execute some code. In this case the code is: <code>$("#Probe").show();</code> which shows the paragraph Probe. The code is the same for the Hide button, with the exception that it causes the paragraph field to be hidden.</p>
+
+<p>The next steps will start to build something closer to a trial based experiment. We will have one paragraph element that used to display the Stroop stimulus, and one button that used to increment the trial counter. Clicking the button will show a new Stroop stimulus each time, simulating going from one trial to the next</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="jquery-1.7.1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="StrooptrialGenerator.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(document).ready(function(){
+
+var counter = -1;
+        $("#next").click(function(){
+        counter++;
+        $("#Probe").html(trials[counter][0]);
+        $("#Probe").css("color",trials[counter][1]);
+        });
+});
+
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;p id="Probe"&gt;Hello world&lt;/p&gt;
+&lt;button id="next"&gt;Next Trials&lt;/button&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>We’ve added a variable called counter, and initialized it to -1. We added a button called <code>next</code>, and written some code that controls what happens when the button is clicked. When the button is clicked, the trial counter is incremented by 1. The <code>Probe</code> paragraph html is set to <code>trials[counter][0]</code>, which displays the word for the current trials, and the color of the font is set by: <code>$("#Probe").css("color",trials[counter][1]);</code>. This line also reads from the trials array to set the color.</p>
+
+<p>Now, clicking button presents a new trial. Next, the data should be recorded. We need to save the onset time of the Stroop stimulus, a button-press for the response, and the response time for the button press. Finally, we need to put these all together, along with the trial information (word, color, condition, trial number) in a data file. We might also implement some control in the script so that when a participant makes a response the next trial is automatically triggered.</p>
+
+<p>Let’s begin by recording a response, and the response time, and having that printed to a paragraph onscreen so that we can be sure we are measuring everything correctly.</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;script type="text/javascript" src="jquery-1.7.1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="StrooptrialGenerator.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(document).ready(function(){
+
+var counter = -1;
+        $("#next").click(function(){
+        trialcounter++
+        $("#Probe").html(trials[counter][0]);
+        $("#Probe").css("color",trials[counter][1]);
+        });
+
+$("body").keypress(function(event){
+d = new Date();
+$("#responsetime").html(d.getTime() + “ “ + String.fromCharCode(event.which)); 
+});
+
+});
+
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;p id="Probe"&gt;Hello world&lt;/p&gt;
+&lt;button id="next"&gt;Next Trials&lt;/button&gt;
+&lt;p id="Response"&gt;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Press the next trials to start a trial, press a key on the keyboard to make a response. When you press a key, the computer will display the key you pressed, and the computer time in milliseconds when you pressed it. This will be printed to paragraph Response below. A note on the timestamps. The time that is recorded in variable <code>d</code> is recorded when <code>new Date()</code> is called. The latter code <code>d.getTime()</code> is a method for outputting the contents of <code>d</code> in millisecond format. Calling for a <code>new Date()</code> is time sensitive, and should be placed immediately at the front of keystroke collection and immediately after stimulus presentation for precise timing.</p>
+
+<p>At this point the major obstacles to programming an experiment have been solved. The design of 96 Stroop trials has been captured and stored in an array. That array is used to determine the words and colors that get printed to the screen on each trial. The example shows how to program a simple paragraph element in HTML to display text, and shows how to use JQUERY to update and the change the contents of the paragraph. Finally, the Javascript code for recording time stamps is covered.</p>
+
+<p>All that is left is organizational and making things look pretty. One issue is to create a final data structure that can be exported after the experiment is completed. This tutorial only briefly covers this final operation as different researchers will want to code their data structures in different ways for different purposes. The important thing is that you code a data structure that preserves all of the important information, saves it in a file, and can be meaningfully interpreted during analysis at a later date.</p>
+
+<h3>Next Steps</h3>
+
+<p>There are several more example Scripts in the tutorial that provide further modification to this basic Stroop experiment, with the goal of making a website that can interface with Amazon's Mechanical Turk.</p>
+
+<p><code>StroopDemo2.html</code></p>
+
+<p>File Dependencies: jquery-1.7.1.js, StrooptrialGenerator.js, Stroop.css</p>
+
+<p>New Changes:</p>
+
+<ul>
+<li>Makes the font bigger</li>
+<li>Centers Stroop stimulus horizontally</li>
+<li>Stroop stimulus disappears after response</li>
+<li>Response automatically triggers next trial with a delay of 500 ms</li>
+</ul>
+
+
+<p><code>StroopDemo3.html</code></p>
+
+<p>File Dependencies: jquery-1.7.1.js, StrooptrialGenerator.js, Stroop.css</p>
+
+<p>New Changes:</p>
+
+<ul>
+<li>Uses CSS style sheets</li>
+<li>Place Stimulus in the center of the window (both horizontally and vertically)</li>
+<li>Make the background Black</li>
+<li>Set many paragraph properties with CSS</li>
+</ul>
+
+
+<p><code>StroopDemo4.html</code></p>
+
+<p>File Dependencies: jquery-1.7.1.js, StrooptrialGenerator.js, Stroop.css</p>
+
+<p>New Changes:</p>
+
+<ul>
+<li>Include a fixation warning before stimulus onset</li>
+<li>Give feedback after each trial</li>
+</ul>
+
+
+<p><code>StroopDemo5.html</code></p>
+
+<p>File Dependencies: jquery-1.7.1.js, StrooptrialGenerator.js, Stroop.css</p>
+
+<p>New Changes:</p>
+
+<ul>
+<li>Disable use of Backspace and space keys (general example of disabling default web Browser behavior triggered by pressing keys.)</li>
+<li>Web-browsers have some default behaviors that may interrupt your experiment. For example, pressing the backspace key can cause the browser to return to the previous page. Or press space can cause the browser to page-down. It may be important to override these defaults.</li>
+</ul>
+
+
+<p><code>StroopDemo6.html</code></p>
+
+<p>File Dependencies: jquery-1.7.1.js, StrooptrialGenerator.js, Stroop.css, StroopDemo6b.html, TURKconsent.htm</p>
+
+<p>New Changes:</p>
+
+<ul>
+<li>This demo begins covering options you may want for running on AmazonTurk
+<code>StroopDemo6.html</code> is now an opening page that displays a consent form, and an accept button.</li>
+<li>The opening window also has a form that can later be used to submit data to Amazon. One of the form inputs (called RTs) would normally be hidden, but is shown in the demo at the bottom of the screen. This form will be populated with the datafile, a string of datavalues after the experiment is complete.</li>
+<li>The pop-up window that runs the main experiment goes full-screen.</li>
+<li>A challenge with using a pop-window is to have the data collected from this window be sent back to the parent window. There is a new submit data button in the pop-up window that gives example code for sending data from the child pop-up back to the parent pop-up.</li>
+<li>This also shows how to present an html document as a frame inside a document. This is used to present the consent form on the opening page.</li>
+</ul>
+
+
+<p><code>StroopDemo7.html</code></p>
+
+<p>File Dependencies: jquery-1.7.1.js, StrooptrialGenerator.js, Stroop.css, StroopDemo6b.html, TURKconsent.htm</p>
+
+<p>New Changes:</p>
+
+<ul>
+<li>Added a demographics questionnaire to beginning of experiment window on popup.</li>
+<li>Shows examples of extracting data from HTML elements and forms using JQUERY</li>
+<li>Demographics is saved as part of the data, which is returned to the main window form element input RTs.</li>
+<li>Buttons like submit data, and the RTs form in the parent window are shown to give examples of functionality, these can easily be hidden.</li>
+</ul>
+
+
+<h1>Running your Experiment on Amazon Turk</h1>
+
+<p>There are several steps involved in running your experiment on Amazon Turk. This is a short guide to get up and running.</p>
+
+<h2>Create an Account</h2>
+
+<p>Go to the Amazon Turk website and create an account. To do this you will need an Amazon account. You can use your Amazon account to log-in to all of the Amazon Turk services. There is a  verification process, as being a work requester requires that you link an American credit card or debit card to the account so that you can put money in to pay the workers.</p>
+
+<h2>Worker site, Requester site, &amp; the Sandbox</h2>
+
+<p>Amazon Turk has different websites depending on how you want to log in. As an experimenter you will need to become a work requester. You can also become a worker. On the worker site you will see the hits (jobs) that are currently posted. On the requester site you will have the ability to post and manage your jobs. It is good to have access both as a worker and requester so that as a requester you can check to see that the workers are seeing what you want them to see.
+    Most of the important de-bugging and testing can be accomplished in the Amazon Turk Sandbox. This is basically a mirror-copy of the main worker and requester sites, except they operate in test-run (sandbox) mode. Once you have your experiment programmed and ready to roll, you can first load it up as a requester in sandbox mode, then you can log in as worker in sandbox mode and test out your experiment.
+    In sandbox mode you can 1) verify that your experiment runs at it should, and 2) MOST IMPORTANTLY, that your script interfaces properly with Amazon so that two things happen, A) the worker can accept, complete, and submit the hit to get paid, and B) your data gets sent to Amazon so that you can later retrieve it. Both of these functions can be tested in sandbox mode prior to loading the hits on the main page.</p>
+
+<h2>Basic overview of interfacing with Amazon Turk</h2>
+
+<p>The rest of this tutorial assumes that you have a Mac. The basic process will be the same on a Windows machine with slight modifications that are not covered here. First, you need to create a web-based experiment, then you need to be able to host this experiment on a server so that people on the web can access the experiment. If you host on your own server then many more options become available to you. For example, you can have your website send data back to your server as participants complete the experiment.</p>
+
+<p>This tutorial covers a different option. If you have a dropbox account, then you can host your experiment directly from your public folder. Any file in your public folder can generate an external link allowing anyone with the link to access the file. This allows your experiment to be served to the web. However, this method does not allow client-side information to be passed back to the Dropbox server. All of the data handling will be dealt with client-side, on the workers computer. To accomplish this, your experiment needs to put the data that it generates into HTML form element (which will be a hidden text box). At the end of the experiment the contents of this form element (your data), will be submitted to the Amazon system along with other worker information (such as worker ID, time started, time completed, and other information that automatically gets passed). You will retrieve the data from Amazon’s servers.</p>
+
+<p>The process of loading a hit onto Amazon Turk can be accomplished directly from the Turk requester website. This website gives the tools to construct and load simple HITs, things like questionnaires. If you are running a multi-trial experiment using your own website you will not be able to use Amazon’s built in tools.
+Luckily, Amazon provides a rich set of command line tools that allow you to use shell scripts in UNIX to load and manage your HITS, this includes paying workers and downloading your data. The shell scripts can be run directly from the terminal on a mac. If you are on windows there are similar options that are not covered here.</p>
+
+<h2>Download the Command Line Tools</h2>
+
+<p>The first step is downloading the command line tools provided by Amazon. You access these by clicking on the developer tab on your requester page. You will see a link to download the CLT or command line tools. Click this link, then find the option for UNIX downloads. Download the file. You will get an archive that looks like aws-clt-1-1.3.0.tar. Extract the archive. Now you have access to a folder with all of the command line tools. In the main folder there is a UserGuide.html and other pages that walk through all of the examples.</p>
+
+<h2>External Hit sample application</h2>
+
+<p>In the user guide you will want to read up on the External hit sample application, these are tools used to interface your web-experiment with Amazon.</p>
+
+<p>You can find all of the scripts associated with this sample application by looking in the samples folder in the command line tools that you downloaded. You should see a sample called external_hit. This folder contains several files. With the exception of externalpage.htm, all of these files are unix shell scripts. They are all currently configured to run an example of loading a hit onto Amazon.</p>
+
+<p>A good first step is figuring out how to load this hit into your requester sandbox. If you can get this hit working, then you are one step closer to getting your own hit working. Eventually, we will copy some of the code from the externalpage.htm example into your own experiment code, using the same methods as in the example to interact with amazon.</p>
+
+<h2>Running the example</h2>
+
+<ol>
+<li>Amazon will provide you with two access codes. An access_key, and a secret_key. Find these two codes, you will need them to run the example.</li>
+<li>In the CLT folder, you will see another folder called bin. Inside this folder is a .txt file called mturk.properties. You will need to edit this file. You can do use in any text editor. A good free one is TextWrangler. You will see access_key=[insert your access key here] and the same for secret_key. You need to insert both codes into the file. Notice the example in comments above in the file. The codes here do not [ ] square brackets around them. Follow this example. Do not enter the code in between the square brackets. Enter the code without square brackets.</li>
+<li><p>In the same file you will see an Advanced properties section. This is where you set whether or not you load your HIT into the sandbox for testing, or the main website. You want to load the example into the sandbox. The comment symbol, #, controls the behavior. You should see the following:</p>
+
+<pre><code> # -------------------
+ # ADVANCED PROPERTIES
+ # -------------------
+ #
+ # If you want to test your solution in the Amazon Mechanical Turk Developers Sandbox (http://sandbox.mturk.com)
+ # use the service_url defined below:
+ #service_url=http://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester
+
+ # If you want to have your solution work against the Amazon Mechnical Turk Production site (http://www.mturk.com)
+ # use the service_url defined below:
+ service_url=http://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester
+
+ # The settings below should only be modified under special circumstances.
+ # You should not need to adjust these values.
+ retriable_errors=Server.ServiceUnavailable,503
+ retry_attempts=6
+ retry_delay_millis=500
+</code></pre></li>
+</ol>
+
+
+<p>To use the sandbox, remove the # from the line:
+        #service_url=http://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester</p>
+
+<p>And add a comment to the following line:</p>
+
+<pre><code>service_url=http://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester
+</code></pre>
+
+<p>Your script should read:</p>
+
+<pre><code>    # ADVANCED PROPERTIES
+    # -------------------
+    #
+    # If you want to test your solution in the Amazon Mechanical Turk Developers Sandbox (http://sandbox.mturk.com)
+    # use the service_url defined below:
+    service_url=https://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester
+
+    # If you want to have your solution work against the Amazon Mechnical Turk Production site (http://www.mturk.com)
+    # use the service_url defined below:
+    #service_url=https://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester
+
+    # The settings below should only be modified under special circumstances.
+    # You should not need to adjust these values.
+    retriable_errors=Server.ServiceUnavailable,503
+    retry_attempts=6
+    retry_delay_millis=500
+</code></pre>
+
+<p>IMPORTANT NOTE:
+I have run into an error using this file exactly as written above. The error has to do with the http:// statement. To run without errors, the http:// needs to be changed to https://. Notice, in the above code the http:// has been changed to https://</p>
+
+<h2>Running the example in the terminal</h2>
+
+<p>The scripts provided by Amazon in the external_hit folder are run in the terminal on a mac. There are several scripts in the folder and each accomplishes different jobs. The scripts are currently configured to run the external_hit example. To do this you will use the run.sh script.</p>
+
+<ol>
+<li>Open the terminal</li>
+<li>navigate to the directory that contains the external_hit folder, go into the external_hit folder</li>
+<li><p>run the <code>run.sh</code> script, type:</p>
+
+<pre><code> ./run.sh
+</code></pre></li>
+</ol>
+
+
+<p>Press enter. If everything has worked, your terminal will contact Amazon and load up the external_hit example onto your sandbox. The terminal ought to return a direct link to this HIT in the sandbox. You can copy and paste it into your browser to view the hit online.</p>
+
+<p>Using the sandbox as a worker you should find and complete the hit. You will see the amazon interface that the workers see, and this will show you how the worker finds, sees, and interacts with your HIT.</p>
+
+<p>When you click on the HIT to view it, you will see an accept hit button. You can complete the hit, and then submit it to amazon.</p>
+
+<h2>Getting results</h2>
+
+<p>After you have completed the hit, you can use the terminal again to download the data. Using the same steps as above you should run the <code>getResults.sh</code> script in the terminal. This will download the results into a file called <code>external_hit.results</code>, which is contained in the external_hit example folder.</p>
+
+<h2>Approving and deleting</h2>
+
+<p>If this was a real hit, then you would need to approve the job to pay the worker, and delete the hit from amazon. You can do this in the terminal by running approveAndDeleteResults.sh. This command also works in the sandbox, and will pay you fake money for your hit as well as delete the hit from Amazon. If you do not make a habit of managing your HITs on Amazon then it will become very cluttered and you may accidentally fail to pay workers.</p>
+
+<h2>General points about the example</h2>
+
+<p>If you ran the example, you will see that you can complete the hit from within the amazon interface. The amazon interface loads the external page as an inline frame. If you directed Amazon to your own webpage instead the example, then your webpage would be loaded in the frame. As a quick side note, the external_hit.question file is where you tell amazon which webpage to load. If you look at this file you will see that amazon is hosting the webpage (a copy of which is in your external_hit folder). For example, the file reads:</p>
+
+<pre><code>&lt;ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"&gt;
+    &lt;ExternalURL&gt;http://s3.amazonaws.com/mturk/samples/sitecategory/externalpage.htm?url=${helper.urlencode($urls)}&lt;/ExternalURL&gt;
+    &lt;FrameHeight&gt;450&lt;/FrameHeight&gt;
+&lt;/ExternalQuestion&gt;
+</code></pre>
+
+<p>You would replace the external URL reference with your own website, as in:</p>
+
+<pre><code>&lt;ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"&gt;
+    &lt;ExternalURL&gt;http://www.yourwebsite.com&lt;/ExternalURL&gt;
+    &lt;FrameHeight&gt;450&lt;/FrameHeight&gt;
+&lt;/ExternalQuestion&gt;
+</code></pre>
+
+<p>You can look at a copy of the externalpage.htm file that amazon is hosting on it’s own server, it is in your external_hit sample folder. This file contains javascript code, and html forms that show how to interact with Amazon. This is very important code.</p>
+
+<ol>
+<li>The code determines whether the worker has accepted the HIT</li>
+<li>Once the HIT has been accepted, the code submits data back to amazon, and tells amazon that worker completed the hit.</li>
+</ol>
+
+
+<p>The important features of the code are:</p>
+
+<ol>
+<li>the <code>gup</code> function</li>
+</ol>
+
+
+<p>This appears at the top of the <code>externalpage.htm</code> file. The function is written in javascript. In your own code you will have a section in the header where you have your own javascript, and this is where the gup function should be placed. This function allows the website to information to determine whether the HIT has been assigned to a worker.</p>
+
+<ol>
+<li>the <code>mturk_form</code></li>
+</ol>
+
+
+<p>In the body of the HTML you will see an HTML form, the id is <code>mturk_form</code>. This form allows users to input information, and then submit that information back to amazon. In the example you will see a question, what type of webpage is shown below? Then some radio buttons, then a submit button.</p>
+
+<p>Also notice, if you are viewing the page in the sandbox and haven’t yet clicked accept hit, then the submit button that is part of the form will display the message “You must accept hit...”. If you accept the hit, then this message goes away, and you can submit the hit. The javascript controlling this behavior is at the bottom of the html file.</p>
+
+<h2>Data handling</h2>
+
+<p>The data from the hit is sent back to Amazon through the mturk_form. Any input that is in the form will get sent back. If you add form elements, or take away form elements, then you will add or take away from the data that you will see in your results file.</p>
+
+<p>When you run the getResults.sh script you will return the external_hit.results file. The data need to be post-processed. The first line in the data field contains headers for each of the data values. These are like column names in a spreadsheet. The main exception is that each name is enclosed in “ “ quotes. So, you will see something like this:</p>
+
+<pre><code>“hitid” “hittypeid” “title” “description” etc...
+</code></pre>
+
+<p>Each line that follows is the data from a single hit. Each of the data values are also enclosed in quotes and separated by tabs. You could copy and paste the whole thing into excel if you wanted to, and it would fit neatly into the rows and columns.</p>
+
+<p>Each line is very long containing information from multiple variables. The data that you want returned from the hit will be near the very end, or the last quoted item in the line. Any element in the mturk_form that is submitted will be included in the data line as its own quoted item.</p>
+
+<p>There are probably many options for sending and receiving data through Amazon. The direction that I chose was to have my web experiment compile all of the data from the experiment into a single line, and then put this single line of data into the mturk_form as a form element. This way the built-in form sends the data back using the code that Amazon provides. This long line of data will be in string format, that is just a long list of characters. Data in this format will need parsing later for final analysis.</p>
+
+<p>The strategy that I adopt is to have my data be separated by different item-delimiters that can be uniquely identified later to parse the line. For example, I store all of the data during the experiment in a javascript array. Each element in the array can be outputted as a comma separated list using the <code>.join</code> method (e.g., <code>yourarray.join()</code> returns a comma separated list in string format). Trial 1 might look like:</p>
+
+<pre><code>red,green,congruent,13241986,12341697,r
+</code></pre>
+
+<p>The next step is to aggregate across lines of data into a single line. For this I choose another unique item-delimiter, like <code>:</code></p>
+
+<p>So, two lines of data can be concatenated onto one line like this:</p>
+
+<pre><code>red,green,congruent,13241986,12341697,r: red,green,congruent,13241986,12341697,r:
+</code></pre>
+
+<p>The <code>:</code> becomes an end of line character that is used in post-processing to individuate lines.</p>
+
+<p>You will need to make your own decisions about how to format and process your data. This tutorial does not cover data-analysis or processing of data, the main purpose is to show how data can be passed and retrieved from amazon.</p>
+
+<h2>Loading the Stroop example experiment onto Amazon Turk</h2>
+
+<p><code>StroopDemo8.html</code> is a more complete example providing code to run a Stroop experiment like the ones in the previous demos. This script extends the previous examples in several ways.</p>
+
+<ol>
+<li>The demo can be loaded on Amazon Turk as HIT. It would be best to do this in sandbox mode.</li>
+<li>The demo allows workers to preview the hit before accepting. In preview mode a message is displayed saying that in order to complete the hit, the worker must first press accept hit before continuing. Having a preview mode is helpful for workers to decide if they want to participate in your experiment.</li>
+<li>The demo includes a browser detection script. If the browser is internet explorer, then a message is returned saying that the HIT cannot be completed. Links are provided to download safari, google chrome, or firefox.</li>
+<li>The demo has functionality that interacts with amazon in important ways. When the worker accepts the hit, and completes the task, the pop-window automatically closes, and the information in the main window changes. After completion the main window shows a submit button, and a web form for workers to leave comments if they choose to. When the submit button is pressed the data from the experiment and any text in the form is passed back to amazon.</li>
+</ol>
+
+
+<p>Steps to run the demo on Amazon Turk</p>
+
+<ol>
+<li><p>Create a free dropbox account so that you can serve the experiment to the web. With the dropbox folder, anything placed inside your dropbox public folder can generate a link. Create a new folder inside your dropbox public folder. This folder will house the files needed to run the experiment. Copy the following files from the tutorial folder into the folder that you create:</p>
+
+<ul>
+<li><code>StroopDemo8.html</code> This is the HTML for the opening page</li>
+<li><code>StroopDemo8b.html</code>       This is the main experiment, opens as a pop-up</li>
+<li><code>StrooptrialGenerator.js</code>     Javascript functions for the experiment</li>
+<li><code>Jquery-1.7.1.js</code>         JQUERY library</li>
+<li><code>Stroop.css</code>          Style sheet for experiment</li>
+<li><code>TURKconsent.htm</code>     Example consent form</li>
+<li><code>StroopInstruct.htm</code>      Stroop Instructions</li>
+</ul>
+</li>
+</ol>
+
+
+<p>You can test the experiment at this point. If you open up <code>StroopDemo8.html</code> in a web-browser everything should run smoothly. However, at the end of the experiment you will not be able to submit or retrieve the data, as this part only works when the experiment is loaded and run on Amazon Turk.</p>
+
+<ol>
+<li><p>The tutorial folder contains a folder called DemoStroop. This is basically a copy of the external_hit folder folder provided by Amazon and reviewed in the previous section. The contents of the DemoStroop folder are:</p></li>
+<li><p><code>approveAndDeleteResults.sh</code>      Run after all hits complete, approves and deletes hits</p></li>
+<li><code>external_hit.input</code>          Carry-over from external_hit, not used but left in place</li>
+<li><code>external_hit.properties</code>         Edit to change properties of your experiment</li>
+<li><code>external_hit.question</code>           Edit to change web-address for experiment</li>
+<li><code>external_hit.results</code>            Will contain results after they have been downloaded</li>
+<li><code>external_hit.success</code>            A log file</li>
+<li><code>externalpage.htm</code>        Carry-over from external_hit, not used</li>
+<li><code>getResults.sh</code>               Script to retrieve data from Amazon</li>
+<li><code>reviewResults.sh</code>            Allows you to review results</li>
+<li><code>run.sh</code>                  Load a HIT onto Amazon</li>
+</ol>
+
+
+<p>Make a copy of this folder and/or place it into your <code>aws-mturk-clt-1.3.0/samples/</code> directory. I made this folder by simply copying the external_hit folder, giving the folder a new name, and then editing the contents of the text files that are contained within. In the DemoStroop folder most of the files have already been edited, but a few more edits will be required.</p>
+
+<h2>Edits to file path</h2>
+
+<p>If you were to make a copy of the external_hit folder, then the main edits that you will need to make are to the file paths in each of the scripts. In each of the scripts, whenever you see the filepath <code>/samples/external_hit</code>, you will need to change external_hit to the new filepath, in this case <code>DemoStroop</code>. All of the scripts in the <code>DemoStroop</code> folder have already included this change.</p>
+
+<h2>Edits to web-address</h2>
+
+<p>The file <code>external_hit.question</code> needs to be edited so that you can refer Amazon to the web address for the experiment. The web address that is currently there links to a file on my dropbox folder. You will want to change this to link to the <code>StroopDemo8.html</code> file in your dropbox folder (note: control-clicking or right-clicking on <code>StroopDemo8.html</code> in the finder will give a dropbox option to copy public link, this is the link to place in <code>external_hit.question</code>).</p>
+
+<h2>Edits to properties</h2>
+
+<p>The <code>external_hit.properties</code> file allows you to change the title, description, keywords, reward (payment), and other properties of your HIT.</p>
+
+<h3>NUMBER OF ASSIGNMENTS vs.  NUMBER OF HITS (BIG DIFFERENCE)</h3>
+
+<p>The <code>external_hit.properties</code> file allows you to change the number of assignments per hit. Most likely this is option that you want. Using this option Amazon generates 1 HIT, and ensures that any individual worker completes the hit just once. If you want many unqiue workers to complete the HIT, then set the number of assignments to a larger value.</p>
+
+<p>You can change the number of HITS in the run.sh script. You will see –maxhits 1 at the end of the third last line. If you increase this number then Amazon will load the corresponding number of HITS, however this will give the same worker the option to complete the hit as many times as it is listed.</p>
+
+<p>If you want unique subjects, then change the number of assignments and keep maxhits to 1.</p>
+
+<h2>Ready to Load!</h2>
+
+<p>All the files should be in place. To load the experiment onto amazon use the same steps as in the external_hit example</p>
+
+<ol>
+<li>open up a terminal</li>
+<li>change the directory to DemoStroop</li>
+<li>Make sure your <code>mturk.properties</code> file has the sandbox line uncommented, and the main website commented out.</li>
+<li>Type <code>./run.sh</code> into the terminal and press enter</li>
+<li>If the hit loads you will get a link to it, copy and past into a browser and accept and complete the hit</li>
+<li>Note: the experiment is set to last 10 trials.</li>
+<li>Submit the hit back to Amazon</li>
+<li>To download the data type <code>./getResults.sh</code> into the terminal and press enter</li>
+<li>View the data that is now in <code>external_hit.results</code> in your DemoStroop folder</li>
+<li> To approve and delete the hit type: <code>./approveAndDeleteResults.sh</code> and enter into the terminal</li>
+</ol>
+
+</body>
+</html>
