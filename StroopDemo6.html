@@ -1,0 +1,45 @@
+<html>
+<head>
+<link rel="stylesheet" href="Stroop.css" type="text/css" charset="utf-8"/>
+<script type="text/javascript" src="jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	$("#RTs").show();                //data field  - stays hidden
+	$("#submitButton").hide();             //submit data to Amazon - shows at end
+	$("#getData").hide();           // submit data to data field - stays hidden
+	
+	});
+	
+function basicPopup(url) {
+		popupWindow = window.open(url,'popUpWindow','height=' + screen.height + ',width=' +screen.width+',\
+		left=0,top=0,resizable=yes,scrollbars=yes,toolbar=no,\
+		menubar=no,location=no,directories=no,status=yes');
+	}
+
+</script>
+</head>
+
+<body>
+
+<button id="trial" onclick="basicPopup('StroopDemo6b.html');return false">Accept</button>
+
+<p id="secondInst">Please read the consent form below that explains your rights as a human participant in research</p>
+<tr><td height="100%">
+<iframe id="ConsentFrame" width="100%" height="50%" src="TURKconsent.htm"></iframe>
+</td></tr>
+
+<form id="mturk_form" method="POST" action="http://www.mturk.com/mturk/externalSubmit">
+<input type="hidden" id="assignmentId" name="assignmentId" value="">
+<table border="0" height="0%" width="100%">
+<tr><td>
+<input id="submitButton" type="submit" name="Submit" value="Submit">
+<input id="RTs" type="text" name = "RTs"><br />
+</td></tr>
+</table>
+</form>
+
+</body>
+</html>

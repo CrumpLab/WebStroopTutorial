@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- inside the <head> statement is where we include our javascript libraries-->
+<script type="text/javascript" src="jquery-1.7.1.js"></script>
+<script type="text/javascript" src="StrooptrialGenerator.js"></script>
+
+<!-- next we write a segment for the javascript that controls the webpage-->
+<script type="text/javascript">
+
+//we are now inside javascript script, so we are using different comments
+//All of our code will go into the $(document).ready(function(){ });
+//This makes sure that everything is loaded before the page is shown
+//our code is written inside the {code here} curly brackets
+
+$(document).ready(function(){
+
+//This is all Javascript, but with some special syntax used by JQUERY
+//JQUERY lets us use javascript to control HTML elements, treating them like variables
+//Whenever you see $("#something"), we are using JQUERY to refer to an HTML element
+//anything else is just javascript
+	
+	//this is a counter variable to keep track of the current trial number
+	//we use this number to index into our trial array
+	counter=-1;
+	
+	//This is a JQUERY function
+	//$("#start").click(function(){code here} is referring the  start button
+	//the start button is defined in the HTML body, it is a button with the id="start"
+	//This function allows us to execute code whenever the button is clicked, hence the .click
+	$("#start").click(function(){
+		counter++; //adds 1 to trials counter
+		
+		//refers to the paragraph id="Probe"
+		//sets it's HTML contents to the first element in trials[counter][0], which is a word value
+		$("#Probe").html(trials[counter][0]); 
+		//changes the css or style property of the HTML element to a color
+		//trials[counter][1] is a color value
+		$("#Probe").css("color",trials[counter][1]);
+		//creates a variable d with the current time
+		//used to record the time the item was presented on screen
+		d = new Date();
+		//writes the time to paragraph onsettime defined in the body
+    	$("#onsettime").html(d.getTime()); 
+	});
+	
+	
+	//This is a function that runs whenever the web-browser detects keypresses
+	$("body").keypress(function(event){
+		//we get the the time as in above
+  		 d = new Date();
+  		 $("#responsetime").html(d.getTime()); 
+  		 $("#responsetime").append(" " + String.fromCharCode(event.which));
+  		 });
+	
+});
+
+</script>
+
+<!-- we are now back in the HTML, but still inside the <head> segment-->
+
+</head>
+
+
+<!-- here we define the body of the html page, this is where we place HTML elements
+like text boxes, paragraphs, buttons and so on -->
+
+<body>
+
+<p id="Probe" align="center">Ready?</p>
+<button id="start" align="center">Press to Start</button>
+<p id="onsettime" align="center">asdfsadfasfsad</p>
+<p id="responsetime" align="center"></p>
+
+</body>
+</html>

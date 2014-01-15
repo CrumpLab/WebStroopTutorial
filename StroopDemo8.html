@@ -1,0 +1,123 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="Stroop.css" type="text/css" charset="utf-8"/>
+<script type="text/javascript" src="jquery-1.7.1.js"></script>
+<script type="text/javascript" src="StrooptrialGenerator.js"></script>
+
+<script type="text/javascript">
+
+function gup( name )
+{
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var tmpURL = window.location.href;
+  var results = regex.exec( tmpURL );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+
+
+$(document).ready(function(){
+
+	//Uses a function added to StrooptrialGenerator.js that detects web-browsers
+	//Explorer is terrible, so we return a message saying the experiment can not be run on explorer
+	if (BrowserInfo[0] == 'Explorer') {
+	$("#mainpageInst").hide();
+	$("#explorerInst").show();
+	} else {
+	$("#mainpageInst").show();
+	$("#explorerInst").hide();
+	}
+
+	$("#mturk_form").hide();
+	$("#RTs").hide();                //data field  - stays hidden
+	$("#submitButton").hide();             //submit data to Amazon - shows at end
+	$("#getData").hide();           // submit data to data field - stays hidden
+
+	});
+	
+function basicPopup(url) {
+		popupWindow = window.open(url,'popUpWindow','height=' + screen.height + ',width=' +screen.width+',\
+		left=0,top=0,resizable=yes,scrollbars=yes,toolbar=no,\
+		menubar=no,location=no,directories=no,status=yes');
+	}
+	
+function endofExp() {
+	$("#mturk_form").show();
+	$("#submitButton").show();
+	$("#RTs").hide();
+	$("#mainpageInst").hide();
+	$("#trial").hide();
+	}
+
+</script>
+</head>
+
+<body>
+
+<form id="mturk_form" method="POST" action="process.php">
+<input type="hidden" id="assignmentId" name="assignmentId" value="">
+<table border="0" height="0%" width="100%">
+<tr><td>
+<p>You have completed the Experiment, thank you for your participation. Please submit your Hit </p
+<p>If you would like to leave a comment, or report a problem use the form below before submitting</p>
+<input id="submitButton" type="submit" name="Submit" value="Submit"> <br />
+<textarea cols="40" rows="5" name="Comments" id="Comments"> </textarea>
+<input id="RTs" type="text" name = "RTs"><br />
+</td></tr>
+</table>
+</form>
+
+<button id="trial" onclick="basicPopup('StroopDemo8b.html');return false">Accept</button>
+
+<div id="mainpageInst">
+<p id="secondInst">Please read the consent form below that explains your rights as a human participant in research</p>
+<tr><td height="100%">
+<iframe id="ConsentFrame" width="100%" height="50%" src="TURKconsent.htm"></iframe>
+</td></tr>
+</div>
+
+<div id = "explorerInst">
+<p> </p>
+<p>This experiment will not run properly using Internet Explorer. Please use one of the following browsers, we recommend Safari:</p>
+<p color="white"><a href ="http://www.apple.com/safari/">Safari</a></p>
+<p><a href ="http://www.google.com/chrome/">Chrome</a></p>
+<p><a href ="http://www.mozilla.org">Firefox</a></p>
+<p> </p>
+</div>
+
+
+</body>
+<!--<script language="Javascript">
+   
+    document.getElementById('assignmentId').value = gup('assignmentId');
+
+    //
+    // Check if the worker is PREVIEWING the HIT or if they've ACCEPTED the HIT
+    //
+    if (gup('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE")
+    {
+  // If we're previewing, disable the button and give it a helpful message
+  var previewit = 1;
+  document.getElementById('submitButton').disabled = true;
+  document.getElementById('submitButton').value = "You must ACCEPT the HIT before you can submit the results.";
+    } else {
+    var previewit = 0;
+        var form = document.getElementById('mturk_form');
+        if (document.referrer && ( document.referrer.indexOf('workersandbox') != -1) ) {
+            form.action = "http://workersandbox.mturk.com/mturk/externalSubmit";
+        }
+    }
+
+</script>
+-->
+
+</body>
+</html>
+
+
+</html>
+</html>

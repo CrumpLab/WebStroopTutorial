@@ -1,0 +1,51 @@
+<html>
+<head>
+<link rel="stylesheet" href="Stroop.css" type="text/css" charset="utf-8"/>
+<script type="text/javascript" src="jquery-1.7.1.js"></script>
+<script type="text/javascript" src="StrooptrialGenerator.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+		//initialize experiment
+		var counter = -1;
+		var wh = $(window).height();
+		var ww = $(window).width();
+		$("#Probe").css("top",wh/2);
+		$("#Probe").css("left",ww/2);
+		data = [['']];
+		$("#Probe").hide();
+		$("#next").show();
+		
+		
+    	$("#next").click(function(){
+    		$("#next").hide();
+    		runtrial();
+    	});
+    	
+    	function runtrial(){
+		counter++;
+   		$("#Probe").html(trials[counter][0]);
+		$("#Probe").css("color",trials[counter][1]);
+		$("#Probe").show();
+		d1 = new Date();
+    	}
+
+		$("body").keypress(function(event){
+		d2 = new Date();
+		data[counter]=[trials[counter],d1.getTime(),d2.getTime(),String.fromCharCode(event.which)];
+		$("#Probe").hide();
+		setTimeout(runtrial,500);  
+		});
+
+});
+        
+</script>
+</head>
+
+<body>
+
+<p id="Probe"> </p>
+<button id="next">Begin</button>
+<p id="Response"></p>
+
+</body>
+</html>

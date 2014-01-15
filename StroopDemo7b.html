@@ -1,0 +1,143 @@
+<html>
+<head>
+<link rel="stylesheet" href="Stroop.css" type="text/css" charset="utf-8"/>
+<script type="text/javascript" src="jquery-1.7.1.js"></script>
+<script type="text/javascript" src="StrooptrialGenerator.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+		
+		//Initialize experiment
+		var counter = -1;					//keeps current trial as a count, incremented in runtrial()
+		data = [['']];						//initializes a data array
+		$("#Probe").hide();					//hides the Probe paragraph on page load
+		$("#next").hide();					//shows the Begin button, the id is next
+		$("#Demographics").show();
+		var trialstep = 0;
+		
+		//Collects Demographics
+		$("#continue").click(function(){
+	  	deminfo = $("#Country").val() + "," + $("#Sex:checked").val() + "," +
+  			$("#Age:checked").val() + "," + $("#Hand:checked").val() + "," +
+  			$("#Vision:checked").val() + "," + $("#English:checked").val();
+  		$("#Demographics").hide();
+		$("#TaskInstruct").show();
+		$("#next").show();
+		$("#continue").hide();
+		$("#Demographics").hide();
+		});
+		
+		//Experiment starts by a button click with this function
+    	$("#next").click(function(){
+    		$("#next").hide(); 				//the button hides itself
+    		var wh = $(window).height();		//computes height of web-browser window during opening in pixels
+			var ww = $(window).width();			//computes width of web-browser window during opening in pixels
+			$("#Probe").css("top",wh/2);		//sets top property of Probe paragraph -- centers vertically
+			$("#Probe").css("left",ww/2);		//sets left propert of Probe paragraph -- centers vertically
+    		runtrial(); 					//a call to the runtrial() function formally begins the first trial
+    	});
+    	
+    	//Function that runs each trial
+    	function runtrial(){
+    		if (trialstep == 0) {
+    			$("#Probe").html("+");     //display a fixation cross
+    			trialstep++;               //increase trialstep counter
+    			setTimeout(runtrial,500);  //call runtrial() to present Stroop stimulus in 500 ms
+    		}
+    		else {
+				counter++;					//increase the counter (current trial number)
+   				$("#Probe").html(trials[counter][0]); //put word info into Probe paragraph
+				$("#Probe").css("color",trials[counter][1]); //change color of paragraph
+				$("#Probe").show();			//Show the paragraph
+				d1 = new Date();			//record the onset time of the Stroop stimulus
+			}
+    	}
+
+		//Function to collect Responses
+		$("body").keypress(function(event){
+		d2 = new Date(); //get new timestampe for response
+		data[counter]=[trials[counter],d1.getTime(),d2.getTime(),String.fromCharCode(event.which)]; //store everything in data array
+		//determines if response is correct and displays feeback
+		if (String.fromCharCode(event.which) == trials[counter][1][0]) {
+				$("#Probe").css("color","white");
+				$("#Probe").html("correct");
+				}
+				else {
+				$("#Probe").css("color","white");
+				$("#Probe").html("error");
+				}	
+		trialstep=0; //resets trialstep so that runtrial() will start with fixation
+		setTimeout(runtrial,500);  //calls runtrial() to begin a trial in 500ms
+		});
+		
+	///Function To stop backspace presses 8, and spaces 32 
+	$(function(){
+		/*
+		 * this swallows backspace keys on any non-input element.
+		 * stops backspace -> back
+		 */
+		var rx = /INPUT|SELECT|TEXTAREA/i;
+	
+		$(document).bind("keydown keypress", function(e){
+			if( e.which == 32 ||e.which == 8 ){ // 8 == backspace
+				if(!rx.test(e.target.tagName) || e.target.disabled || e.target.readOnly ){
+					e.preventDefault();
+				}
+			}
+		});
+	});
+	
+	
+  	
+  	$("#sendData").click(function(){
+		$("#RTs", opener.window.document).val(deminfo + ":" + data.join(":"));
+  	});
+
+});
+        
+</script>
+</head>
+
+<body>
+<button id="sendData">Submit Data back to first page</button>
+<p id="Probe"> </p>
+<button id="next">Begin</button>
+<p id="Response"></p>
+
+<div id="Demographics" style="text-align:center">
+<p>As a part of the research we are collecting general demographic information. </p>
+<p>You are not required to complete these questions. </p>
+<p>However, doing so will help us better understand our results.</p>
+<p>1. Country
+<input id="Country" type="text"> </p>
+<p>2.
+<input id="Sex" type="radio" name="SexGroup" value="Male"> Male
+<input id="Sex" type="radio" name="SexGroup" value="Female"> Female</p>
+<p>3.  Age Range</p>
+<input id="Age" type="radio" name="AgeGroup" value="20"> < 20
+<input id="Age" type="radio" name="AgeGroup" value="25"> 20 - 25
+<input id="Age" type="radio" name="AgeGroup" value="30"> 26 - 30
+<input id="Age" type="radio" name="AgeGroup" value="35"> 31 - 35
+<input id="Age" type="radio" name="AgeGroup" value="40"> 36 - 40<br>
+<input id="Age" type="radio" name="AgeGroup" value="45"> 41 - 45
+<input id="Age" type="radio" name="AgeGroup" value="50"> 46 - 50
+<input id="Age" type="radio" name="AgeGroup" value="55"> 51 - 55
+<input id="Age" type="radio" name="AgeGroup" value="60"> 56 - 60
+<input id="Age" type="radio" name="AgeGroup" value="65"> 61 - 65
+<input id="Age" type="radio" name="AgeGroup" value="70"> 66 and above<br>
+<p>4. Handedness</p>
+<input id="Hand" type="radio" name="HandGroup" value="Right"> Right
+<input id="Hand" type="radio" name="HandGroup" value="Left"> Left
+<input id="Hand" type="radio" name="HandGroup" value="Both"> Both
+<p>5. Vision</p>
+<input id="Vision" type="radio" name="VisionGroup" value="Normal"> Normal eyesight without needing glasses<br>
+<input id="Vision" type="radio" name="VisionGroup" value="Corrected"> Corrected Vision (wear glasses)<br>
+<input id="Vision" type="radio" name="VisionGroup" value="problems"> Poor eyesight and do not wear glasses<br>
+<p>6. English Ability</p>
+<input id="English" type="radio" name="EnglishGroup" value="First"> First-language speaker<br>
+<input id="English" type="radio" name="EnglishGroup" value="Second"> Second-language speaker<br>
+<input id="English" type="radio" name="EnglishGroup" value="None"> No English ability<br>
+<button id="continue">Continue</button>
+</div>
+
+</body>
+</html>
